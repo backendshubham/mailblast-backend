@@ -11,11 +11,9 @@ router.post('/', async (req, res) => {
     });
 
     const veri = await transporter.verify();
-    console.log("veri =>", veri)
     res.json({ success: true });
   } catch (err) {
-    console.log('err ==>', err)
-    res.status(401).json({ success: false, error: err.message });
+    res.status(401).json({ success: false, error: 'Incorrect email or password. Please check your SMTP credentials. If you\'re using Gmail and have 2-Step Verification enabled, use an App Password.' });
   }
 });
 module.exports = router;

@@ -67,7 +67,7 @@ router.post('/', async (req, res) => {
     if (file && fs.existsSync(uploadPath)) {
       fs.unlinkSync(uploadPath); // clean up if error occurred
     }
-    res.status(500).json({ status: 'Failed', error: 'Incorrect email or password. Please check your SMTP credentials. If you\'re using Gmail and have 2-Step Verification enabled, use an App Password.' });
+    res.status(500).json({ status: 'Failed', error: err.message });
   }
 });
 
